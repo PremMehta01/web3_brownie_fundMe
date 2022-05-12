@@ -21,11 +21,15 @@ def test_can_fund_and_withdraw():
 
 
 def test_only_owner_can_withdraw():
+    # we will test this method only if we have local blockchain else we will skip
     if network.show_active() not in LOCAL_BLOCKCHAIN_ENVIRONMENT:
         pytest.skip('OOPS!! "test_only_owner_can_withdraw" is only for local testing')
 
     fund_me = deploy_fund_me()
+    # bad address :: not the owner address
     bad_actor = accounts.add()
 
+    # pytest will check if we receive VirtualMachineError error then test pass
+    # else test case fails
     with pytest.raises(exceptions.VirtualMachineError):
         fund_me.withdraw({"from": bad_actor})

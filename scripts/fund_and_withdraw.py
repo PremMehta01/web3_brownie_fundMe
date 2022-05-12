@@ -3,7 +3,7 @@ from scripts.helpful_scripts import get_account
 
 
 def fund():
-    fund_me = FundMe[-1]
+    fund_me = FundMe[-1]  # use -1 to get the latest one.
     account = get_account()
     entrance_fee = fund_me.getEntranceFee()
     print(f"The current entry fees is: {entrance_fee}")

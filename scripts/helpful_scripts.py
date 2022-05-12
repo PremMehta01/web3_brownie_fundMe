@@ -4,10 +4,14 @@ from web3 import Web3
 DECIMALS = 8
 STARTING_PRICE = 200000000000
 
+# you can see all env of brownie by running "brownie networks list" in terminal
 LOCAL_BLOCKCHAIN_ENVIRONMENT = ["development", "ganache-local"]
 FORKED_LOCAL_ENVIRONMENT = ["mainnet-fork"]
 
 
+# If blockchain env is local or forked then get the address from loal
+# basically the 0th index address
+# else take the address from the brownie-config.yaml file
 def get_account():
     if (
         network.show_active() in LOCAL_BLOCKCHAIN_ENVIRONMENT
@@ -18,6 +22,7 @@ def get_account():
         return accounts.add(config["wallets"]["from_key"])
 
 
+# we need to deploy mocks for getting local price_feed
 def deploy_mocks():
     print(f"The active network is {network.show_active()}")
     print("Deploying Mocks...")

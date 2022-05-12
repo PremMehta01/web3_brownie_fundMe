@@ -2,6 +2,8 @@ dependencies:
   # - <organization/repo>@<version>
   - smartcontractkit/chainlink-brownie-contracts@1.1.1
 
+
+# To tell eth blockchain to map @chainlink anywhere in the code to smartcontractkit/chainlink-brownie-contracts@1.1.1
 compiler:
   solc:
     remappings:
@@ -10,10 +12,12 @@ compiler:
 
 dotenv: .env
 
+# PRIVATE_KEY is in .env file
 wallets:
   from_key: ${PRIVATE_KEY}
 
 
+# eth_usd_price_feed address taken from https://docs.chain.link/docs/ethereum-addresses/
 networks:
   rinkeby:
     eth_usd_price_feed: "0x8A753747A1Fa494EC906cE90E9f37563A8AF630e"
